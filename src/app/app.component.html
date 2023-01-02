@@ -1,0 +1,34 @@
+<form action="">
+  <div class="form-group">
+    <label>Ingrese primer valor</label>
+    <input type="number" class="form-control" [(ngModel)]="PrimerValor" name="PrimerValor"/>
+  </div>
+  <br>
+  <div class="form-group">
+    <label>Ingrese segundo valor</label>
+    <input type="number" class="form-control" [(ngModel)]="SegundoValor" name="SegundoValor"/>
+  </div>
+  <br>
+
+  <select [(ngModel)]="option" name="datos" id="datos">
+    <option *ngFor="let datos of options" value="{{datos}}">{{datos}}</option>
+  </select>
+
+  <div>
+    <p>Resultado:</p>
+    <div [ngSwitch]="option">
+      <div *ngSwitchCase="'suma'" [ngStyle]="{'color': 'blue'}">
+        {{PrimerValor + SegundoValor}}
+      </div>
+        <div *ngSwitchCase="'resta'" [ngStyle]="{'color': 'gray'}">
+          {{PrimerValor - SegundoValor}}
+    </div>
+      <div *ngSwitchCase="'multiplicación'" [ngStyle]="{'color': 'green'}">
+        {{PrimerValor * SegundoValor}}
+  </div>
+    <div *ngSwitchCase="'división'" [ngStyle]="{'color': 'brown'}">
+      {{PrimerValor / SegundoValor}}
+    </div>
+    <div *ngSwitchDefault="" [ngStyle]="{'color': 'red'}">
+     (No eligió operación)
+    </div>
